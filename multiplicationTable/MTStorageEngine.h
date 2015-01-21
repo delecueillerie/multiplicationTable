@@ -1,5 +1,5 @@
 //
-//  user.h
+//  storageEngine.h
 //  multiplicationTable
 //
 //  Created by Olivier Delecueillerie on 23/12/2014.
@@ -8,9 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@interface user : NSObject
+@interface MTStorageEngine : NSObject
 
-@property (strong, nonatomic) NSString *name;
-@property (strong, nonatomic) NSData *picture;
 
++ (MTStorageEngine *)sharedInstance;
+
+-(NSArray *) users;
+-(NSArray *) tests;
 @end

@@ -8,7 +8,8 @@
 
 #import "MTSelectUser.h"
 #import <circleCollectionControlLib/circleCollectionItemModel.h>
-
+#import "MTStorageEngine.h"
+#import "MTUser.h"
 
 
 
@@ -32,30 +33,17 @@
 -(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     return cell;
-
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
-    
-    //Content extraction
-    NSError *error;
-    NSString *jsonPath = [[NSBundle mainBundle] pathForResource:@"users" ofType:@"json"];
-    NSString *jsonString = [[NSString alloc] initWithContentsOfFile:jsonPath encoding:NSUTF8StringEncoding error:NULL];
-    //NSLog(@"jsonString:%@",jsonString);
-    
-    NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:[jsonString dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
-    if (error) {
-        NSLog(@"JSON Serialization Error %@", [error description]);
-    }
+    self.navigationItem.title = @"Mental calculation";
     
     NSMutableArray *items = [[NSMutableArray alloc] initWithCapacity:10];
-    for (NSDictionary *dic in jsonArray) {
-        [items addObject:[circleCollectionItemModel newWithName:[dic valueForKey:@"name"]
-                                                             picture:[UIImage imageNamed:[dic valueForKey:@"picture"]]
-                                                               color:[dic valueForKey:@"color"]]];
+    for (MTUser *user in [[MTStorageEngine sharedInstance] users]) {
+        [items addObject:[circleCollectionItemModel newWithName:user.name
+                                                        picture:user.picture
+                                                          color:nil]];
     }
     
     self.collectionView = [circleCollectionView newCircleCollectionViewEmbeddedIn:self.collectionViewContainer

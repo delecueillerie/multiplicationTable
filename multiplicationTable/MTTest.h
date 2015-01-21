@@ -8,17 +8,19 @@
 
 #import <Foundation/Foundation.h>
 
-@interface test : NSObject
+@interface MTTest : NSObject
 
 typedef NS_ENUM(NSInteger, tableNumberEnum) {
-    table2,
-    table3,
-    table4,
-    table5,
-    table6,
-    table7,
-    table8,
-    table9
+    table1 = 1,
+    table2 = 2,
+    table3 = 3,
+    table4 = 4,
+    table5 = 5,
+    table6 = 6,
+    table7 = 7,
+    table8 = 8,
+    table9 = 9,
+    table10=10,
 };
 
 
@@ -26,6 +28,7 @@ typedef NS_ENUM(NSInteger, tableNumberEnum) {
 
 @property (nonatomic) tableNumberEnum tableNumber;
 
+-(instancetype) initWithTableNumberEnum:(tableNumberEnum)tableNumber;
 
 @end
 

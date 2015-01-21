@@ -6,15 +6,15 @@
 //  Copyright (c) 2014 lagspoon. All rights reserved.
 //
 
-#import "test.h"
+#import "MTTest.h"
 
-@interface test ()
+@interface MTTest ()
 
 @property (strong, nonatomic) NSArray *multiplicationArray;
 @end
 
 
-@implementation test
+@implementation MTTest
 
 
 const int tableLimitInt = 10;

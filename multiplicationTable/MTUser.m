@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 lagspoon. All rights reserved.
 //
 
-#import "user.h"
+#import "MTUser.h"
 
-@implementation user
+@implementation MTUser
 
 @end

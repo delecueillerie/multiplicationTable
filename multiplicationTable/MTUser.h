@@ -1,5 +1,5 @@
 //
-//  storageEngine.h
+//  user.h
 //  multiplicationTable
 //
 //  Created by Olivier Delecueillerie on 23/12/2014.
@@ -7,10 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-@interface storageEngine : NSObject
+@interface MTUser : NSObject
 
-
-+ (storageEngine *)sharedInstance;
+@property (strong, nonatomic) NSString *name;
+@property (strong, nonatomic) UIImage *picture;
 
 @end
