@@ -1,0 +1,17 @@
+ [
+  {
+  "name": "Isaac Newton",
+  "picture": "newton",
+  "color": [188,187,187]
+  },
+  {
+  "name": "Léon Foucault",
+  "picture": "foucault",
+  "color": [132,75,71]
+  },
+  {
+  "name": "Albert Einstein",
+  "picture": "einstein",
+  "color": [186,7,69]
+  }
+  ]
