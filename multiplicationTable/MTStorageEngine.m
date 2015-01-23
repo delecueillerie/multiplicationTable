@@ -143,7 +143,7 @@
         for (NSDictionary *dic in jsonArray) {
             MTUser *user = [[MTUser alloc] init];
             user.name = [dic valueForKey:@"name"];
-            user.picture = [UIImage imageNamed:[dic valueForKey:@"picture"]];
+            user.picture = UIImageJPEGRepresentation([UIImage imageNamed:[dic valueForKey:@"picture"]],0.5);
             [items addObject:user];
         }
     return items;

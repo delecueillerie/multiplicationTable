@@ -26,8 +26,6 @@ typedef NS_ENUM(NSInteger, tableNumberEnum) {
 
 
 
-@property (nonatomic) tableNumberEnum tableNumber;
-
 -(instancetype) initWithTableNumberEnum:(tableNumberEnum)tableNumber;
 
 @end

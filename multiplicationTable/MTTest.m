@@ -11,6 +11,9 @@
 @interface MTTest ()
 
 @property (strong, nonatomic) NSArray *multiplicationArray;
+@property (nonatomic) tableNumberEnum tableNumber;
+@property (nonatomic) BOOL until;
+
 @end
 
 

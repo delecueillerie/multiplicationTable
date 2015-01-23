@@ -42,7 +42,7 @@
     NSMutableArray *items = [[NSMutableArray alloc] initWithCapacity:10];
     for (MTUser *user in [[MTStorageEngine sharedInstance] users]) {
         [items addObject:[circleCollectionItemModel newWithName:user.name
-                                                        picture:user.picture
+                                                        picture:[UIImage imageWithData:user.picture]
                                                           color:nil]];
     }
     

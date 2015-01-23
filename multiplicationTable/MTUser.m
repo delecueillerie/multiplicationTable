@@ -10,4 +10,9 @@
 
 @implementation MTUser
 
+
+-(NSDictionary *) userDictionary {
+    NSDictionary *userDic = [NSDictionary dictionaryWithObjectsAndKeys:self.name, @"name", nil];
+    return userDic;
+}
 @end

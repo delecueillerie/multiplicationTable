@@ -16,6 +16,7 @@
 		09CF9CEE1A6F15490064CCA4 /* MTUserPlayHistoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CF9CED1A6F15490064CCA4 /* MTUserPlayHistoryController.m */; };
 		09CF9CF01A6F19030064CCA4 /* users.json in Resources */ = {isa = PBXBuildFile; fileRef = 09CF9CEF1A6F19030064CCA4 /* users.json */; };
 		09CF9CF21A6F1C790064CCA4 /* circleCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09CF9CF11A6F1C790064CCA4 /* circleCellView.xib */; };
+		09CF9CF81A7075840064CCA4 /* MTPlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CF9CF71A7075840064CCA4 /* MTPlay.m */; };
 		09F4395C1A49BF0F005D8C4D /* MTUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 09F4395B1A49BF0F005D8C4D /* MTUser.m */; };
 		09F4395F1A49BF79005D8C4D /* MTStorageEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 09F4395E1A49BF79005D8C4D /* MTStorageEngine.m */; };
 		09F439621A49CA6B005D8C4D /* multiplicationTable.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09F439601A49CA6B005D8C4D /* multiplicationTable.storyboard */; };
@@ -61,6 +62,8 @@
 		09CF9CED1A6F15490064CCA4 /* MTUserPlayHistoryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTUserPlayHistoryController.m; sourceTree = "<group>"; };
 		09CF9CEF1A6F19030064CCA4 /* users.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = users.json; sourceTree = "<group>"; };
 		09CF9CF11A6F1C790064CCA4 /* circleCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = circleCellView.xib; path = ../../circleCollectionControl/circleCollectionControl/circleCellView.xib; sourceTree = "<group>"; };
+		09CF9CF61A7075840064CCA4 /* MTPlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTPlay.h; sourceTree = "<group>"; };
+		09CF9CF71A7075840064CCA4 /* MTPlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTPlay.m; sourceTree = "<group>"; };
 		09F4395A1A49BF0F005D8C4D /* MTUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTUser.h; sourceTree = "<group>"; };
 		09F4395B1A49BF0F005D8C4D /* MTUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTUser.m; sourceTree = "<group>"; };
 		09F4395D1A49BF79005D8C4D /* MTStorageEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTStorageEngine.h; sourceTree = "<group>"; };
@@ -134,6 +137,8 @@
 				09F4395E1A49BF79005D8C4D /* MTStorageEngine.m */,
 				0924AA8E1A4495D5005A3ECE /* MTTest.h */,
 				0924AA8F1A4495D5005A3ECE /* MTTest.m */,
+				09CF9CF61A7075840064CCA4 /* MTPlay.h */,
+				09CF9CF71A7075840064CCA4 /* MTPlay.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -272,6 +277,7 @@
 			files = (
 				0924AA651A4481E4005A3ECE /* AppDelegate.m in Sources */,
 				09F4395C1A49BF0F005D8C4D /* MTUser.m in Sources */,
+				09CF9CF81A7075840064CCA4 /* MTPlay.m in Sources */,
 				09F4395F1A49BF79005D8C4D /* MTStorageEngine.m in Sources */,
 				09CF9CEE1A6F15490064CCA4 /* MTUserPlayHistoryController.m in Sources */,
 				09F439661A49CB38005D8C4D /* MTSelectUser.m in Sources */,

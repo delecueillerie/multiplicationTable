@@ -12,6 +12,7 @@
 @interface MTUser : NSObject
 
 @property (strong, nonatomic) NSString *name;
-@property (strong, nonatomic) UIImage *picture;
+@property (strong, nonatomic) NSData *picture;
 
+-(NSDictionary *) userDictionary;
 @end
