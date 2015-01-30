@@ -9,9 +9,10 @@
 #import "MTStorageEngine.h"
 #import "MTUser.h"
 #import "MTTest.h"
-
+#import "MTGame.h"
 
 #define USERS @"users"
+#define GAMES @"games"
 #define TESTS @"tests"
 #define USER_PLAY_HISTORY @"userPlayHistory"
 #define TEST_PLAY_HISTORY @"testPlayHistory"
@@ -22,6 +23,8 @@
 
 @property (strong, nonatomic) NSArray *users;
 @property (strong, nonatomic) NSArray *tests;
+@property (strong, nonatomic) NSArray *games;
+
 @property (strong, nonatomic) NSDictionary *userPlayHistoryDictionary;
 @property (strong, nonatomic) NSDictionary *testPlayHistoryDictionary;
 
@@ -35,7 +38,7 @@
 @implementation MTStorageEngine
 
 
-@synthesize userPlayHistoryDictionary = _userPlayHistoryDictionary, testPlayHistoryDictionary = _testPlayHistoryDictionary, users = _users, tests = _tests;
+@synthesize userPlayHistoryDictionary = _userPlayHistoryDictionary, testPlayHistoryDictionary = _testPlayHistoryDictionary, users = _users, tests = _tests, games=_games;
 
 + (MTStorageEngine*)sharedInstance {
     static MTStorageEngine *_sharedInstance = nil;
@@ -71,6 +74,24 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
+
+-(NSArray *) games {
+    if (!_games) {
+        _games = [[NSUserDefaults standardUserDefaults] arrayForKey:GAMES];
+        if (!_games)
+        {
+            _games = [self gamesFromJsonFile];
+        }
+    }
+    return _games;
+}
+
+-(void) setGames:(NSArray *)games {
+    _games = games;
+    [[NSUserDefaults standardUserDefaults] setObject:_users forKey:GAMES];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
 -(NSArray *) tests {
     if (!_tests) {
         _tests = [[NSUserDefaults standardUserDefaults] arrayForKey:TESTS];
@@ -93,6 +114,7 @@
     }
     return _tests;
 }
+
 -(NSDictionary *) userPlayHistoryDictionary {
     if (!_userPlayHistoryDictionary) {
         _userPlayHistoryDictionary = [[NSUserDefaults standardUserDefaults] dictionaryForKey:USER_PLAY_HISTORY];
@@ -109,6 +131,7 @@
     [[NSUserDefaults standardUserDefaults] setObject:_userPlayHistoryDictionary forKey:USER_PLAY_HISTORY];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
+
 -(NSDictionary *) testPlayHistoryDictionary {
     if (!_testPlayHistoryDictionary) {
         _testPlayHistoryDictionary = [[NSUserDefaults standardUserDefaults] dictionaryForKey:TEST_PLAY_HISTORY];
@@ -128,19 +151,9 @@
 #pragma mark - Utilities
 
 -(NSArray *) usersFromJsonFile {
-        //Content extraction
-        NSError *error;
-        NSString *jsonPath = [[NSBundle mainBundle] pathForResource:@"users" ofType:@"json"];
-        NSString *jsonString = [[NSString alloc] initWithContentsOfFile:jsonPath encoding:NSUTF8StringEncoding error:NULL];
-        //NSLog(@"jsonString:%@",jsonString);
-        
-        NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:[jsonString dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
-        if (error) {
-            NSLog(@"JSON Serialization Error %@", [error description]);
-        }
-        
+    
         NSMutableArray *items = [[NSMutableArray alloc] initWithCapacity:10];
-        for (NSDictionary *dic in jsonArray) {
+        for (NSDictionary *dic in [self dataFromJsonFile:@"users"]) {
             MTUser *user = [[MTUser alloc] init];
             user.name = [dic valueForKey:@"name"];
             user.picture = UIImageJPEGRepresentation([UIImage imageNamed:[dic valueForKey:@"picture"]],0.5);
@@ -149,5 +162,29 @@
     return items;
 }
 
+-(NSArray *) gamesFromJsonFile {
+    
+    NSMutableArray *items = [[NSMutableArray alloc] initWithCapacity:10];
+    for (NSDictionary *dic in [self dataFromJsonFile:@"games"]) {
+        MTGame *game = [[MTGame alloc] init];
+        game.name = [dic valueForKey:@"name"];
+        game.picture = UIImageJPEGRepresentation([UIImage imageNamed:[dic valueForKey:@"picture"]],0.5);
+        [items addObject:game];
+    }
+    return items;
+}
 
+-(NSArray *) dataFromJsonFile:(NSString *)path {
+    //Content extraction
+    NSError *error;
+    NSString *jsonPath = [[NSBundle mainBundle] pathForResource:path ofType:@"json"];
+    NSString *jsonString = [[NSString alloc] initWithContentsOfFile:jsonPath encoding:NSUTF8StringEncoding error:NULL];
+    //NSLog(@"jsonString:%@",jsonString);
+    
+    NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:[jsonString dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
+    if (error) {
+        NSLog(@"JSON Serialization Error %@", [error description]);
+    }
+    return jsonArray;
+}
 @end

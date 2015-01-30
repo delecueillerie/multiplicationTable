@@ -1,0 +1,17 @@
+ [
+  {
+  "name": "Table d'addition",
+  "picture": "newton",
+  "color": [188,187,187]
+  },
+  {
+  "name": "Table de multiplication",
+  "picture": "foucault",
+  "color": [132,75,71]
+  },
+  {
+  "name": "Addition posée",
+  "picture": "einstein",
+  "color": [186,7,69]
+  }
+  ]

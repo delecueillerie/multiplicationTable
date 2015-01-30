@@ -14,5 +14,6 @@
 + (MTStorageEngine *)sharedInstance;
 
 -(NSArray *) users;
+-(NSArray *) games;
 -(NSArray *) tests;
 @end

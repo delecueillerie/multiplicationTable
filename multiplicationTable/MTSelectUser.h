@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import <circleCollectionControlLib/circleCollectionView.h>
 
-@interface MTSelectUser : UIViewController <UITableViewDataSource, UITableViewDelegate, circleCollectionViewDelegate>
+@interface MTSelectUser : UIViewController <UICollectionViewDataSource,UICollectionViewDelegate, circleCollectionViewDelegate>
 
 @end

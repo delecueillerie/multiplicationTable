@@ -10,46 +10,55 @@
 #import <circleCollectionControlLib/circleCollectionItemModel.h>
 #import "MTStorageEngine.h"
 #import "MTUser.h"
+#import "MTGame.h"
 
+#import "MTGameCVCell.h"
 
 
 @interface MTSelectUser ()
-@property (weak, nonatomic) IBOutlet UIView *collectionViewContainer;
+@property (weak, nonatomic) IBOutlet UIView *userCollectionViewContainer;
 
+@property (strong, nonatomic) circleCollectionView *userCollectionView;
 
-@property (strong, nonatomic) circleCollectionView *collectionView;
+@property (strong, nonatomic) NSArray *games;
 @end
 
 @implementation MTSelectUser
 
--(void) collectionView:(circleCollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
+
+
+#pragma mark - Accessors
+
+-(NSArray *) games {
+    if (!_games) {
+        _games = [[MTStorageEngine sharedInstance] games];
+    }
+    return _games;
 }
 
--(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
-}
 
--(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-    return cell;
-}
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"Mental calculation";
+    self.navigationItem.title = @"Harry Metic";
     
+    
+    //instantiate user collection
     NSMutableArray *items = [[NSMutableArray alloc] initWithCapacity:10];
     for (MTUser *user in [[MTStorageEngine sharedInstance] users]) {
         [items addObject:[circleCollectionItemModel newWithName:user.name
                                                         picture:[UIImage imageWithData:user.picture]
                                                           color:nil]];
     }
-    
-    self.collectionView = [circleCollectionView newCircleCollectionViewEmbeddedIn:self.collectionViewContainer
+    self.userCollectionView = [circleCollectionView newCircleCollectionViewEmbeddedIn:self.userCollectionViewContainer
                                                                       includeData:items
                                                                withAddButtonImage:[UIImage imageNamed:@"Add"]
                                                                       delegatedBy:self];
+    //instantiate game collection
+    
+    
     
 }
 
@@ -60,11 +69,28 @@
 
 
 #pragma mark - circleCollectionView Delegate
+-(void) collectionView:(circleCollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+}
+
+#pragma mark - collectionView DataSource
+-(NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    NSLog(@"cout %li",[self.games count]);
+    return [self.games count];
+}
 
 
+-(MTGameCVCell *) collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    MTGameCVCell *cell;
+    
+    cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
+    MTGame *game = [self.games objectAtIndex:indexPath.item];
+    
+    cell.name.text = game.name;
+    cell.picture.image = [UIImage imageWithData:game.picture];
 
-
-
+    return cell;
+}
 /*
 #pragma mark - Navigation
 
