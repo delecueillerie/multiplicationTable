@@ -10,15 +10,26 @@
 #import <circleCollectionControlLib/circleCollectionItemModel.h>
 #import "MTStorageEngine.h"
 #import "MTUser.h"
-#import "MTGame.h"
+#import "MTGameSelectionButton.h"
 
-#import "MTGameCVCell.h"
+//#import "MTGame.h"
 
 
 @interface MTSelectUser ()
 @property (weak, nonatomic) IBOutlet UIView *userCollectionViewContainer;
+@property (weak, nonatomic) IBOutlet UIView *buttonContainerView;
 
 @property (strong, nonatomic) circleCollectionView *userCollectionView;
+
+
+@property (weak, nonatomic) IBOutlet MTGameSelectionButton *button00;
+@property (weak, nonatomic) IBOutlet MTGameSelectionButton *button01;
+@property (weak, nonatomic) IBOutlet MTGameSelectionButton *button10;
+@property (weak, nonatomic) IBOutlet MTGameSelectionButton *button11;
+
+
+
+
 
 @property (strong, nonatomic) NSArray *games;
 @end
@@ -29,21 +40,14 @@
 
 #pragma mark - Accessors
 
--(NSArray *) games {
-    if (!_games) {
-        _games = [[MTStorageEngine sharedInstance] games];
-    }
-    return _games;
-}
 
 
-
-
+#pragma mark - VC Lifecycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"Harry Metic";
-    
+    self.buttonContainerView.hidden = YES;
     
     //instantiate user collection
     NSMutableArray *items = [[NSMutableArray alloc] initWithCapacity:10];
@@ -59,6 +63,16 @@
     //instantiate game collection
     
     
+
+    
+}
+
+
+-(void) viewWillAppear:(BOOL)animated {
+    self.button00.titleText = @"Table\nmultiplication";
+    self.button01.titleText = @"Line1\nLine2";
+    self.button10.titleText = @"Line1\nLine2";
+    self.button11.titleText = @"Line1\nLine2";
     
 }
 
@@ -70,35 +84,33 @@
 
 #pragma mark - circleCollectionView Delegate
 -(void) collectionView:(circleCollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    self.buttonContainerView.hidden = NO;
     
 }
-
-#pragma mark - collectionView DataSource
--(NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    NSLog(@"cout %li",[self.games count]);
-    return [self.games count];
+-(void) collectionView:(circleCollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
+    self.buttonContainerView.hidden = YES;
 }
 
 
--(MTGameCVCell *) collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    MTGameCVCell *cell;
-    
-    cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-    MTGame *game = [self.games objectAtIndex:indexPath.item];
-    
-    cell.name.text = game.name;
-    cell.picture.image = [UIImage imageWithData:game.picture];
+#pragma mark - trigerred actions
 
-    return cell;
-}
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)button00:(id)sender {
 }
-*/
+
+
+- (IBAction)button10:(id)sender {
+}
+
+
+- (IBAction)button01:(id)sender {
+}
+
+
+- (IBAction)button11:(id)sender {
+}
+
+
+
 
 @end
