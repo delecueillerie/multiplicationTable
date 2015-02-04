@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <circleCollectionControlLib/circleCollectionView.h>
 
-@interface MTSelectTableVC : UIViewController
+@interface MTSelectTableVC : UIViewController <circleCollectionViewDelegate>
 
+@property (strong, nonatomic) UIImage *userIcon;
 @end

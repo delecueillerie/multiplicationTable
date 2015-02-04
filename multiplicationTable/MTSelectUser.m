@@ -12,6 +12,11 @@
 #import "MTUser.h"
 #import "MTGameSelectionButton.h"
 
+
+
+
+#import "MTSelectTableVC.h"
+
 //#import "MTGame.h"
 
 
@@ -28,6 +33,7 @@
 @property (weak, nonatomic) IBOutlet MTGameSelectionButton *button11;
 
 
+@property (weak, nonatomic) IBOutlet UIImageView *IV;
 
 
 
@@ -60,10 +66,8 @@
                                                                       includeData:items
                                                                withAddButtonImage:[UIImage imageNamed:@"Add"]
                                                                       delegatedBy:self];
-    //instantiate game collection
-    
-    
 
+    
     
 }
 
@@ -73,7 +77,7 @@
     self.button01.titleText = @"Line1\nLine2";
     self.button10.titleText = @"Line1\nLine2";
     self.button11.titleText = @"Line1\nLine2";
-    
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -85,7 +89,6 @@
 #pragma mark - circleCollectionView Delegate
 -(void) collectionView:(circleCollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     self.buttonContainerView.hidden = NO;
-    
 }
 -(void) collectionView:(circleCollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
     self.buttonContainerView.hidden = YES;
@@ -94,21 +97,41 @@
 
 #pragma mark - trigerred actions
 
-
-- (IBAction)button00:(id)sender {
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([segue.destinationViewController isKindOfClass:[MTSelectTableVC class]]) {
+        
+        
+        //instantiate backButtonItem
+        
+        
+        
+        UIImage *backButtonBackgroundImage = [self.userCollectionView selectedUserIcon];
+        // The background should be pinned to the left and not stretch.
+        backButtonBackgroundImage = [backButtonBackgroundImage resizableImageWithCapInsets:UIEdgeInsetsMake(0, backButtonBackgroundImage.size.width, 0, backButtonBackgroundImage.size.width)];
+        /*
+         id appearance = [UIBarButtonItem appearanceWhenContainedIn:[CustomBackButtonNavController class], nil];
+         [appearance setBackButtonBackgroundImage:backButtonBackgroundImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+         */
+        // Provide an empty backBarButton to hide the 'Back' text present by
+        // default in the back button.
+        //
+        // NOTE: You do not need to provide a target or action.  These are set
+        //       by the navigation bar.
+        // NOTE: Setting the title of this bar button item to ' ' (space) works
+        //       around a bug in iOS 7.0.x where the background image would be
+        //       horizontally compressed if the back button title is empty.
+        UIBarButtonItem *backBarButton = [[UIBarButtonItem alloc] initWithTitle:@" " style:UIBarButtonItemStylePlain target:nil action:NULL];
+        [backBarButton setBackButtonBackgroundImage:backButtonBackgroundImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+        self.navigationItem.backBarButtonItem = backBarButton;
+        
+        
+        MTSelectTableVC *destinationVC = (MTSelectTableVC *)segue.destinationViewController;
+    }
+    
+    
 }
 
-
-- (IBAction)button10:(id)sender {
-}
-
-
-- (IBAction)button01:(id)sender {
-}
-
-
-- (IBAction)button11:(id)sender {
-}
 
 
 

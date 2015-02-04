@@ -8,11 +8,10 @@
 
 #import "MTStorageEngine.h"
 #import "MTUser.h"
-#import "MTTest.h"
-#import "MTGame.h"
+#import "MTTable.h"
 
 #define USERS @"users"
-#define GAMES @"games"
+#define MULTIPLICATION_TABLES @"multiplicationTables"
 #define TESTS @"tests"
 #define USER_PLAY_HISTORY @"userPlayHistory"
 #define TEST_PLAY_HISTORY @"testPlayHistory"
@@ -24,7 +23,7 @@
 @property (strong, nonatomic) NSArray *users;
 @property (strong, nonatomic) NSArray *tests;
 @property (strong, nonatomic) NSArray *games;
-
+@property (strong, nonatomic) NSArray *multiplicationTables;
 @property (strong, nonatomic) NSDictionary *userPlayHistoryDictionary;
 @property (strong, nonatomic) NSDictionary *testPlayHistoryDictionary;
 
@@ -38,7 +37,7 @@
 @implementation MTStorageEngine
 
 
-@synthesize userPlayHistoryDictionary = _userPlayHistoryDictionary, testPlayHistoryDictionary = _testPlayHistoryDictionary, users = _users, tests = _tests, games=_games;
+@synthesize userPlayHistoryDictionary = _userPlayHistoryDictionary, testPlayHistoryDictionary = _testPlayHistoryDictionary, users = _users, tests = _tests, multiplicationTables = _multiplicationTables;
 
 + (MTStorageEngine*)sharedInstance {
     static MTStorageEngine *_sharedInstance = nil;
@@ -75,23 +74,23 @@
 }
 
 
--(NSArray *) games {
-    if (!_games) {
-        _games = [[NSUserDefaults standardUserDefaults] arrayForKey:GAMES];
-        if (!_games)
+-(NSArray *) multiplicationTables {
+    if (!_multiplicationTables) {
+        _multiplicationTables = [[NSUserDefaults standardUserDefaults] arrayForKey:MULTIPLICATION_TABLES];
+        if (!_multiplicationTables)
         {
-            _games = [self gamesFromJsonFile];
+            //_multiplicationTables = [self gamesFromJsonFile];
         }
     }
-    return _games;
+    return _multiplicationTables;
 }
 
--(void) setGames:(NSArray *)games {
-    _games = games;
-    [[NSUserDefaults standardUserDefaults] setObject:_users forKey:GAMES];
+-(void) setMultiplicationTables:(NSArray *)multiplicationTables {
+    _multiplicationTables = multiplicationTables;
+    [[NSUserDefaults standardUserDefaults] setObject:_multiplicationTables forKey:MULTIPLICATION_TABLES];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
-
+/*
 -(NSArray *) tests {
     if (!_tests) {
         _tests = [[NSUserDefaults standardUserDefaults] arrayForKey:TESTS];
@@ -113,7 +112,7 @@
         }
     }
     return _tests;
-}
+} */
 
 -(NSDictionary *) userPlayHistoryDictionary {
     if (!_userPlayHistoryDictionary) {
@@ -162,6 +161,7 @@
     return items;
 }
 
+/*
 -(NSArray *) gamesFromJsonFile {
     
     NSMutableArray *items = [[NSMutableArray alloc] initWithCapacity:10];
@@ -173,7 +173,7 @@
     }
     return items;
 }
-
+*/
 -(NSArray *) dataFromJsonFile:(NSString *)path {
     //Content extraction
     NSError *error;

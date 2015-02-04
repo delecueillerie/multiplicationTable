@@ -11,10 +11,9 @@
 		0924AA651A4481E4005A3ECE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0924AA641A4481E4005A3ECE /* AppDelegate.m */; };
 		0924AA6D1A4481E4005A3ECE /* MTImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0924AA6C1A4481E4005A3ECE /* MTImages.xcassets */; };
 		0924AA701A4481E4005A3ECE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0924AA6E1A4481E4005A3ECE /* LaunchScreen.xib */; };
-		0924AA901A4495D5005A3ECE /* MTTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0924AA8F1A4495D5005A3ECE /* MTTest.m */; };
 		093B342A1A80D23F004D27C6 /* MTGameSelectionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 093B34291A80D23F004D27C6 /* MTGameSelectionButton.m */; };
 		093B342E1A810A04004D27C6 /* MTSelectTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 093B342D1A810A04004D27C6 /* MTSelectTableVC.m */; };
-		094398DA1A7A0D4500B997FE /* MTGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 094398D91A7A0D4500B997FE /* MTGame.m */; };
+		093B34311A8180A1004D27C6 /* MTTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 093B34301A8180A1004D27C6 /* MTTable.m */; };
 		094398DD1A7A103B00B997FE /* users.json in Resources */ = {isa = PBXBuildFile; fileRef = 094398DC1A7A103B00B997FE /* users.json */; };
 		09CF9CCE1A6EF5510064CCA4 /* libcircleCollectionControlLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 09CF9CCB1A6EF3D50064CCA4 /* libcircleCollectionControlLib.a */; };
 		09CF9CEE1A6F15490064CCA4 /* MTUserPlayHistoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CF9CED1A6F15490064CCA4 /* MTUserPlayHistoryController.m */; };
@@ -59,14 +58,12 @@
 		0924AA641A4481E4005A3ECE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		0924AA6C1A4481E4005A3ECE /* MTImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = MTImages.xcassets; sourceTree = "<group>"; };
 		0924AA6F1A4481E4005A3ECE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		0924AA8E1A4495D5005A3ECE /* MTTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTTest.h; sourceTree = "<group>"; };
-		0924AA8F1A4495D5005A3ECE /* MTTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTTest.m; sourceTree = "<group>"; };
 		093B34281A80D23F004D27C6 /* MTGameSelectionButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTGameSelectionButton.h; sourceTree = "<group>"; };
 		093B34291A80D23F004D27C6 /* MTGameSelectionButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTGameSelectionButton.m; sourceTree = "<group>"; };
 		093B342C1A810A04004D27C6 /* MTSelectTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTSelectTableVC.h; sourceTree = "<group>"; };
 		093B342D1A810A04004D27C6 /* MTSelectTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTSelectTableVC.m; sourceTree = "<group>"; };
-		094398D81A7A0D4500B997FE /* MTGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTGame.h; sourceTree = "<group>"; };
-		094398D91A7A0D4500B997FE /* MTGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTGame.m; sourceTree = "<group>"; };
+		093B342F1A8180A1004D27C6 /* MTTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTTable.h; sourceTree = "<group>"; };
+		093B34301A8180A1004D27C6 /* MTTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTTable.m; sourceTree = "<group>"; };
 		094398DC1A7A103B00B997FE /* users.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = users.json; sourceTree = "<group>"; };
 		09CF9CC31A6EF3D40064CCA4 /* circleCollectionControl.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = circleCollectionControl.xcodeproj; path = ../circleCollectionControl/circleCollectionControl.xcodeproj; sourceTree = "<group>"; };
 		09CF9CEC1A6F15490064CCA4 /* MTUserPlayHistoryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTUserPlayHistoryController.h; sourceTree = "<group>"; };
@@ -143,16 +140,14 @@
 			children = (
 				09CF9CEF1A6F19030064CCA4 /* games.json */,
 				094398DC1A7A103B00B997FE /* users.json */,
-				094398D81A7A0D4500B997FE /* MTGame.h */,
-				094398D91A7A0D4500B997FE /* MTGame.m */,
 				09F4395A1A49BF0F005D8C4D /* MTUser.h */,
 				09F4395B1A49BF0F005D8C4D /* MTUser.m */,
 				09F4395D1A49BF79005D8C4D /* MTStorageEngine.h */,
 				09F4395E1A49BF79005D8C4D /* MTStorageEngine.m */,
-				0924AA8E1A4495D5005A3ECE /* MTTest.h */,
-				0924AA8F1A4495D5005A3ECE /* MTTest.m */,
 				09CF9CF61A7075840064CCA4 /* MTPlay.h */,
 				09CF9CF71A7075840064CCA4 /* MTPlay.m */,
+				093B342F1A8180A1004D27C6 /* MTTable.h */,
+				093B34301A8180A1004D27C6 /* MTTable.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -296,15 +291,14 @@
 			files = (
 				0924AA651A4481E4005A3ECE /* AppDelegate.m in Sources */,
 				09F4395C1A49BF0F005D8C4D /* MTUser.m in Sources */,
+				093B34311A8180A1004D27C6 /* MTTable.m in Sources */,
 				093B342E1A810A04004D27C6 /* MTSelectTableVC.m in Sources */,
 				09CF9CF81A7075840064CCA4 /* MTPlay.m in Sources */,
 				09F4395F1A49BF79005D8C4D /* MTStorageEngine.m in Sources */,
 				09CF9CEE1A6F15490064CCA4 /* MTUserPlayHistoryController.m in Sources */,
 				09F439661A49CB38005D8C4D /* MTSelectUser.m in Sources */,
 				0924AA621A4481E4005A3ECE /* main.m in Sources */,
-				094398DA1A7A0D4500B997FE /* MTGame.m in Sources */,
 				093B342A1A80D23F004D27C6 /* MTGameSelectionButton.m in Sources */,
-				0924AA901A4495D5005A3ECE /* MTTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -16,4 +16,5 @@
 -(NSArray *) users;
 -(NSArray *) games;
 -(NSArray *) tests;
+-(NSArray *) multiplicationTables;
 @end

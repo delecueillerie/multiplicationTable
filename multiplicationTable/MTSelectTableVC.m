@@ -7,8 +7,18 @@
 //
 
 #import "MTSelectTableVC.h"
+#import <circleCollectionControlLib/circleCollectionItemModel.h>
+#import "MTTable.h"
+#import "MTStorageEngine.h"
 
 @interface MTSelectTableVC ()
+
+
+@property (strong, nonatomic) circleCollectionView *tableCollectionView;
+
+
+@property (weak, nonatomic) IBOutlet UIView *collectionViewContainer;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -16,8 +26,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    
+    self.navigationItem.title = @"Multiplication table";
+    //instantiate user collection
+    NSMutableArray *items = [[NSMutableArray alloc] initWithCapacity:10];
+    for (MTTable *table in [[MTStorageEngine sharedInstance] multiplicationTables]) {
+        [items addObject:[circleCollectionItemModel newWithName:table.name
+                                                        picture:[UIImage imageWithData:table.picture]
+                                                          color:[UIColor blueColor]]];
+    }
+    self.tableCollectionView = [circleCollectionView newCircleCollectionViewEmbeddedIn:self.collectionViewContainer
+                                                                          includeData:items
+                                                                   withAddButtonImage:nil
+                                                                          delegatedBy:self];
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -33,5 +57,15 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
+#pragma mark - circleCollectionView Delegate
+-(void) collectionView:(circleCollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+}
+-(void) collectionView:(circleCollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
+
+}
+
 
 @end
